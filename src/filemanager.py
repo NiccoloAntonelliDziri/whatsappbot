@@ -20,7 +20,7 @@ class FileManager:
         Adds the message to the file in `filename`.
     """
 
-    def __init__(self, filename):
+    def __init__(self):
         """
         Initializes an instance of the class with the given filename.
 
@@ -51,12 +51,14 @@ class FileManager:
             messages = f.read().splitlines()
         return messages
     
-    def add_message_to_file(self, message):
+    def add_message_to_file(self, filename, message):
         """
         Adds the message `message` to the file.
 
         Parameters
         ----------
+        filename : str
+            The name of the file to write.
         message : str
             The message to be added to the file.
         
@@ -65,7 +67,7 @@ class FileManager:
         FileNotFoundError
             If the file does not exist.
         """
-        if not path.isfile(self.filename):
-            raise FileNotFoundError("The file " + self.filename + " does not exist")
-        with open(self.filename, 'a', encoding="UTF-8") as f:
+        if not path.isfile(filename):
+            raise FileNotFoundError("The file " + filename + " does not exist")
+        with open(filename, 'a', encoding="UTF-8") as f:
             f.writelines("\n" + message + "\n")
