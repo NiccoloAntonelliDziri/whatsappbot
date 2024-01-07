@@ -14,9 +14,7 @@ class FileManager:
 
     Methods
     -------
-    set_filename(filename)
-        Changes the name of the file.
-    open_file()
+    open_file(filename)
         Opens the file in `filename` and returns the list of all the messages.
     add_message_to_file(message)
         Adds the message to the file in `filename`.
@@ -26,27 +24,16 @@ class FileManager:
         """
         Initializes an instance of the class with the given filename.
 
-        Parameters
-        ----------
-        filename : str
-            The name of the file to read or write.
         """
-        self.filename = filename
-
-    def set_filename(self, filename):
-        """
-        Changes the name of the file.
-
-        Parameters
-        ----------
-        filename : str
-            The new name of the file.
-        """
-        self.filename = filename
-    
-    def open_file(self):
+        
+    def open_file(self, filename):
         """
         Opens the file and returns the list of all the messages.
+
+        Parameters
+        ----------
+        filename : str
+            The name of the file to read.
 
         Returns
         -------
@@ -58,9 +45,9 @@ class FileManager:
         FileNotFoundError
             If the file does not exist.
         """
-        if not path.isfile(self.filename):
-            raise FileNotFoundError("The file " + self.filename + " does not exist")
-        with open(self.filename, 'r', encoding="UTF-8") as f:
+        if not path.isfile(filename):
+            raise FileNotFoundError("The file " + filename + " does not exist")
+        with open(filename, 'r', encoding="UTF-8") as f:
             messages = f.read().splitlines()
         return messages
     
