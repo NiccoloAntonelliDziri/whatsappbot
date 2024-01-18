@@ -358,7 +358,7 @@ class WhatsappBot:
         pg.hotkey('alt', 'f4')
         sleep(self.sleep_time)
 
-    def send(self, message, open_whatapp = True, send_now = False, go_to_chat = True, quit_whatsapp = True):
+    def send(self, message, open_whatsapp = True, send_now = False, go_to_chat = True, quit_whatsapp = True):
         """
         Sends the specified `message` to the contact. It is a wrapper around the other
         methods of the class.
@@ -377,7 +377,7 @@ class WhatsappBot:
         """
         if not send_now:
             self.wait_before_send()
-        if open_whatapp:
+        if open_whatsapp:
             self.open_whatapp()
         if go_to_chat:
             self.go_to_chat()
