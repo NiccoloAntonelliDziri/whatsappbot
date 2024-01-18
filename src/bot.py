@@ -339,6 +339,7 @@ class WhatsappBot:
         self.write_message(list_msg)
         sleep(self.sleep_time)
         pg.press('enter')
+        sleep(self.sleep_time)
     
     def open_whatapp(self):
         """
@@ -350,7 +351,14 @@ class WhatsappBot:
         pg.leftClick()
         sleep(self.sleep_time_whatsapp)
 
-    def send(self, message, open_whatapp = True, send_now = False, go_to_chat = True):
+    def quit_whatsapp(self):
+        """
+        Quits Whatsapp with alt+F4.
+        """
+        pg.hotkey('alt', 'f4')
+        sleep(self.sleep_time)
+
+    def send(self, message, open_whatapp = True, send_now = False, go_to_chat = True, quit_whatsapp = True):
         """
         Sends the specified `message` to the contact. It is a wrapper around the other
         methods of the class.
@@ -375,3 +383,5 @@ class WhatsappBot:
             self.go_to_chat()
         #sleep(self.sleep_time)
         self.send_message(message)
+        if quit_whatsapp:
+            self.quit_whatsapp()
