@@ -358,7 +358,7 @@ class WhatsappBot:
         pg.hotkey('alt', 'f4')
         sleep(self.sleep_time)
 
-    def send(self, message, open_whatsapp = True, send_now = False, go_to_chat = True, quit_whatsapp = True):
+    def send(self, message, open_whatsapp = True, quit_whatsapp = True, send_now = False, go_to_chat = True):
         """
         Sends the specified `message` to the contact. It is a wrapper around the other
         methods of the class.
@@ -369,6 +369,8 @@ class WhatsappBot:
             The message to be sent to the contact.
         open_whatapp : bool, optional
             Whether to open WhatsApp before sending the message (default is True).
+        quit_whatsapp : bool, optional
+            Whether to quit WhatsApp after sending the message (default is True).
         send_now : bool, optional
             Whether to send the message immediately (default is False).
         go_to_chat : bool, optional
