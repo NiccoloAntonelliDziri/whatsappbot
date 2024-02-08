@@ -28,7 +28,7 @@ The following exemple randomly choses a message in the file `m̀essages.txt` (on
 ```python
 from random import choice
 
-b = bot.WhatsappBot("contact", 9,56)  # Bot configuration
+b = bot.WhatsappBot("contact", 9, 56)  # Bot configuration
 f = fm.FileManager()                 # FileManger object 
 list = f.open_file("messages.txt")   # Opening the file and putting the messages in `list`
 msg = choice(list)                   # Random selection of a message
