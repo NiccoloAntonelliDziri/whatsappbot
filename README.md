@@ -6,13 +6,13 @@ This simple script uses the whatsapp desktop application to automatically send m
 
 The bot works with the desktop application and uses whatsapp keyboard shortcuts. It uses the `pyautogui` to interface whatsapp with the keyboard and the mouse. You also need the 'copy' function from `pyperclip` in order to copy messages onto the clipboard.
 
-Versions that works for me:
-- pyautogui v...
-- pyperclip v...
+Versions that worked for me:
+- pyautogui v0.9.54
+- pyperclip v1.8.2
 
-It can be installed using `command`
+See https://pypi.org/project/PyAutoGUI/ and https://pypi.org/project/pyperclip/ for installation.
 
-Note that I only tested it on Windows 10 with version ... of whatsapp but it should also work on macos. Ubuntu doesn't have an official whatsapp app and the various shorcuts don't work on whatsapp web.
+Note that I only tested it on Windows 10 with version 2.2403.10.0 - at the time of writing this - of whatsapp but it should also work with some previous and future versions and on macos. Linux doesn't have an official whatsapp app.
 
 ## How to use
 
