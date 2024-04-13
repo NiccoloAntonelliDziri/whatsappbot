@@ -311,6 +311,7 @@ class WhatsappBot:
     def write_message(self, split_message):
         """
         Writes a message in the chat. The message is split into text and emojis.
+        Newlines are handled but should not be used in the middle of an emoji.
         
         Parameters
         ----------
