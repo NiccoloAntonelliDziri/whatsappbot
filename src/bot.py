@@ -70,7 +70,7 @@ class WhatsappBot:
     """
 
     def __init__(self, contact, hour, minute, pos_contact=1,
-                    emoji_split_symbol='@', sleep_time=1, sleep_time_whatsapp=15,
+                    emoji_split_symbol='@', newline_split_symbol='\\n',sleep_time=1, sleep_time_whatsapp=15,
                     whatsapp_button_x=991, whatsapp_button_y=1043):
         """
         Initialize the Bot class.
@@ -105,6 +105,7 @@ class WhatsappBot:
         self.sleep_time_whatsapp = sleep_time_whatsapp
         self.whatsapp_button_x = whatsapp_button_x
         self.whatsapp_button_y = whatsapp_button_y
+        self.newline_split_symbol = newline_split_symbol
 
     def __str__(self):
         """
@@ -249,17 +250,21 @@ class WhatsappBot:
     # Ecris texte
     def write(self, text):
         """
-        Writes the specified `text` including emojis in the chat.
+        Writes the specified `text` whereever the cursor is. The text can contain newlines, specified by `self.newline_split_symbol`.
         
         Parameters
         ----------
         text : str
-            The text to be written in the chat.
+            The text to be written.
         """
-        copy(text)
-        pg.hotkey('ctrl', 'v')
+        split_text = text.split(self.newline_split_symbol)
+        for i in range(len(split_text)):
+            copy(split_text[i])
+            pg.hotkey('ctrl', 'v')
+            if (i < len(split_text) - 1):
+                pg.hotkey('shift', 'enter')
 
-    def split_message(self, message):
+    def split_message(self, message, split_symbol):
         """
         Splits the `message` into a list of text and emojis.
         
@@ -274,7 +279,7 @@ class WhatsappBot:
             The list of text and emojis. The text and emojis are alternated. (Empty
             strings are possible.)
         """
-        liste_split = message.split("@")
+        liste_split = message.split(split_symbol)
         return liste_split
     
     # Retire le chiffre situé à la toute fin d'une chaine de caractères
@@ -335,7 +340,7 @@ class WhatsappBot:
         message : str
             The message to be sent to the contact.
         """
-        list_msg = self.split_message(message)
+        list_msg = self.split_message(message, self.emoji_split_symbol) # Sépare les emojis et les textes
         self.write_message(list_msg)
         sleep(self.sleep_time)
         pg.press('enter')
